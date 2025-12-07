@@ -24,6 +24,29 @@ inserted_profiles AS (
     FROM inserted_users
 ),
 
+inserted_projects AS (
+    INSERT INTO projects (name, description, status, owner_id)
+    SELECT 
+        unnest(ARRAY[
+            'Website Redesign',
+            'Mobile App Development',
+            'Database Migration'
+        ]),
+        unnest(ARRAY[
+            'Complete overhaul of company website',
+            'New mobile app for customers',
+            'Migrate legacy database to new system'
+        ]),
+        unnest(ARRAY[
+            'active'::project_status,
+            'active'::project_status,
+            'active'::project_status
+        ]),
+        (SELECT id FROM inserted_users WHERE email = 'john@example.com')
+    RETURNING id, name
+)
+
+
 
 -- migrate:down
 
