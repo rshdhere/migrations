@@ -30,7 +30,7 @@ CREATE TABLE projects (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
     description TEXT,
-    status project_status NOT NULL DEFAULT "active",
+    status project_status NOT NULL DEFAULT 'active',
     owner_id UUID NOT NULL REFERENCES users ON DELETE RESTRICT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
