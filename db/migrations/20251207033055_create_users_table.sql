@@ -70,8 +70,8 @@ DROP TABLE IF EXISTS user_profiles;
 DROP TABLE IF EXISTS users;
 
 -- drop enum types
-DROP TYPE IF EXISTS project_status;
-DROP TYPE IF EXISTS task_status;
 DROP TYPE IF EXISTS member_role;
+DROP TYPE IF EXISTS task_status;
+DROP TYPE IF EXISTS project_status;
 
 
