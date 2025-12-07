@@ -38,7 +38,7 @@ CREATE TABLE projects (
 
 -- create tasks table (one-to-many with projects)
 CREATE TABLE tasks (
-    id UUID PRIMARY KET DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     project_id UUID NOT NULL REFERENCES projects ON DELETE CASCADE,
     title TEXT NOT NULL,
     description TEXT,
