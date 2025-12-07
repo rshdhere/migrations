@@ -1,9 +1,9 @@
 -- migrate:up
 
 -- create custom enum types
-CREATE TYPE project_status AS ENUM ('active', 'completed', 'archived')
-CREATE TYPE task_status AS ENUM ('pending', 'in_progress', 'completed', 'cancelled')
-CREATE TYPE member_role AS ENUM ('owner', 'admin', 'member')
+CREATE TYPE project_status AS ENUM ('active', 'completed', 'archived');
+CREATE TYPE task_status AS ENUM ('pending', 'in_progress', 'completed', 'cancelled');
+CREATE TYPE member_role AS ENUM ('owner', 'admin', 'member');
 
 -- create user table
 CREATE TABLE users (
@@ -13,7 +13,7 @@ CREATE TABLE users (
     password_hash TEXT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 -- create user-profile table
 CREATE TABLE user_profiles (
@@ -24,7 +24,7 @@ CREATE TABLE user_profiles (
     phone TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 
 -- migrate:down
