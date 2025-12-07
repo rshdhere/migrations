@@ -31,11 +31,24 @@ CREATE TABLE projects (
     name TEXT NOT NULL,
     description TEXT,
     status project_status NOT NULL DEFAULT "active",
-    owner_id UUID NOT NULL REFERENCES users ON DELETE CASCADE,
+    owner_id UUID NOT NULL REFERENCES users ON DELETE RESTRICT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- create tasks table (one-to-many with projects)
+CREATE TABLE tasks (
+    id UUID PRIMARY KET DEFAULT gen_random_uuid(),
+    project_id UUID NOT NULL REFERENCES projects ON DELETE CASCADE,
+    title TEXT NOT NULL,
+    description TEXT,
+    priority INTEGER NOT NULL DEFAULT 1 CHECK (priority BETWEEN 1 AND 5),
+    status task_status NOT NULL DEFAULT 'pending',
+    due_date DATE,
+    assigned_to UUID REFERENCES users ON DELETE SET NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+)
 
 -- migrate:down
 
